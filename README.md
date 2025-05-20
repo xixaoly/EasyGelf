@@ -2,46 +2,7 @@ EasyGelf [![Build status](https://ci.appveyor.com/api/projects/status/o7ni0ymhjh
 ========
 Goals: to support up to date version of Gelf and provide reliable integration with popular .Net logging libraries.
 
-Now log4net and NLog are supported. Also Udp, Tcp and Amqp protocols are supported.
-
-## Usage(log4net)
-
-###Configuration example:
-
-``` 
-<?xml version="1.0" encoding="utf-8"?>
-<log4net>
-  <appender name="GelfUdpAppender" type=" EasyGelf.Log4Net.GelfUdpAppender, EasyGelf.Log4Net">
-    <remoteAddress value="127.0.0.1" />
-    <remotePort value="12201" />
-    <facility value="Easy Gelf Example Application" />
-    <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%message%newline" />
-    </layout>
-  </appender>
-  <appender name="GelfAmqpAppender" type=" EasyGelf.Log4Net.GelfAmqpAppender, EasyGelf.Log4Net">
-    <connectionUri value="amqp://" />
-    <facility value="Easy Gelf Example Application" />
-    <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%message%newline" />
-    </layout>
-  </appender>
-  <appender name="GelfTcpAppender" type=" EasyGelf.Log4Net.GelfTcpAppender, EasyGelf.Log4Net">
-    <remoteAddress value="localhost" />
-    <remotePort value="12201" />
-    <facility value="Easy Gelf Example Application" />
-    <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%message%newline" />
-    </layout>
-  </appender>
-  <root>
-    <level value="ALL" />
-    <appender-ref ref="GelfUdpAppender" />
-    <appender-ref ref="GelfAmqpAppender" />
-    <appender-ref ref="GelfTcpAppender" />
-  </root>
-</log4net>
-```                                
+Now NLog are supported. Also Udp, Tcp and Amqp protocols are supported.
 
 ## Usage(NLog)
 
