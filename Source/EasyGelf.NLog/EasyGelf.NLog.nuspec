@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
-    <id>EasyGelf.NLog</id>
+    <id>EasyGelf.NLog.Core</id>
     <version>$version$</version>
-    <title>EasyGelf.NLog</title>
+    <title>EasyGelf.NLog.Core</title>
     <authors>Yury Pliner</authors>
     <owners>Yury Pliner</owners>
     <licenseUrl>https://github.com/Pliner/EasyGelf/blob/master/license.txt</licenseUrl>
@@ -15,7 +15,7 @@
     </releaseNotes>
     <copyright>Copyright Yury Pliner 2015</copyright>
     <dependencies>
-        <dependency id="NLog" version="[3.2.0.0,]" />
+        <dependency id="NLog" version="[5.4.0.0,]" />
     </dependencies>                            
   </metadata>
 </package>

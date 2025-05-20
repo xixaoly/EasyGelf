@@ -26,11 +26,9 @@ namespace EasyGelf.Core.Transports.Amqp
             EstablishConnection();
             foreach (var bytes in encoder.Encode(messageSerializer.Serialize(message)))
             {
-                var basicProperties = new BasicProperties
-                    {
-                        DeliveryMode = configuration.Persistent ? (byte)2 : (byte)1
-                    };
-                channel.BasicPublish(configuration.Exchange, configuration.RoutingKey, false, false, basicProperties, bytes);
+                var basicProperties = channel.CreateBasicProperties();
+                basicProperties.DeliveryMode = configuration.Persistent ? (byte)2 : (byte)1;
+                channel.BasicPublish(configuration.Exchange, configuration.RoutingKey, false, basicProperties, bytes);
             }
         }
 
@@ -55,11 +53,11 @@ namespace EasyGelf.Core.Transports.Amqp
 
                 var connectionFactory = new ConnectionFactory
                     {
-                        Uri = configuration.ConnectionUri,
+                        Uri = new Uri(configuration.ConnectionUri),
                         AutomaticRecoveryEnabled = true,
                         TopologyRecoveryEnabled = true,
                         UseBackgroundThreadsForIO = true,
-                        RequestedHeartbeat = 10,
+                        RequestedHeartbeat = TimeSpan.FromSeconds(10),
                     };
                 connection = connectionFactory.CreateConnection();
                 channel = connection.CreateModel();
