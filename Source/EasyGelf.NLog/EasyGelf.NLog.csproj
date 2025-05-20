@@ -8,5 +8,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EasyGelf.Core\EasyGelf.Core.csproj" />
+
+    <None Include="bin\$(Configuration)\$(TargetFramework)\EasyGelf.Core.dll" Pack="true" PackagePath="lib\$(TargetFramework)\" />
   </ItemGroup>
 </Project>
